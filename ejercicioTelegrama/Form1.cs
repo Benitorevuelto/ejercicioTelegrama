@@ -21,69 +21,65 @@ namespace ejercicioTelegrama
         {
             string textoTelegrama;
 
-            char tipoTelegrama = ' ';
+            char tipoTelegrama = 'o'; //Por defecto ordinario
 
             int numPalabras = 0;
 
             double coste;
 
             //Leo el telegrama
-
             textoTelegrama = txtBoxTexto.Text;
 
-            //Telegrama Urgente
+            // telegrama urgente?
 
             if (checkBoxUrgente.Checked)
             {
                 tipoTelegrama = 'u';
             }
 
-            //Obtengo el número de palabras.
 
-            numPalabras = textoTelegrama.Length;
+            //Separa las palabras y las introduce en una estructura.
 
-            //Si el telegrama es Ordinario
+            String[] palabras = textoTelegrama.Split(' ');
 
+            //Obtiene la longitud de la estructura, que será el número de palabras.
+
+            numPalabras = palabras.Length; 
+
+            //Si el telegrama es ordinario
             if (tipoTelegrama == 'o')
-
+            {
                 if (numPalabras <= 10)
-
                 {
                     coste = 2.5;
                 }
                 else
-
                 {
-                    coste = 0.5 * numPalabras;
+                    coste = 2.5 + 0.5 * (numPalabras - 10);
                 }
+            }
             else
 
             //Si el telegrama es urgente
 
             {
                 if (tipoTelegrama == 'u')
-
                 {
                     if (numPalabras <= 10)
                     {
                         coste = 5;
-
                     }
-
                     else
-
                     {
                         coste = 5 + 0.75 * (numPalabras - 10);
                     }
                 }
-
-                else 
+                else
                 {
                     coste = 0;
                 }
             }
-
-            txtBoxCoste.Text = coste.ToString() + "euros";
+            txtBoxCoste.Text = coste.ToString() + " euros";
         }
     }
 }
