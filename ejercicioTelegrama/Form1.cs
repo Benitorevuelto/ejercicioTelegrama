@@ -21,7 +21,7 @@ namespace ejercicioTelegrama
         {
             string textoTelegrama;
 
-            char tipoTelegrama = 'o'; //Por defecto ordinario
+            char tipoTelegrama = ' '; 
 
             int numPalabras = 0;
 
@@ -30,13 +30,24 @@ namespace ejercicioTelegrama
             //Leo el telegrama
             textoTelegrama = txtBoxTexto.Text;
 
-            // telegrama urgente?
+            //Telegrama ordinario
 
-            if (checkBoxUrgente.Checked)
+            if (radioButtonOr.Checked)
+
+            {
+                tipoTelegrama = 'o';
+            }
+            else
+            {
+                MessageBox.Show("Seleccione el tipo de telegrama. El coste puede variar.");
+            }
+            // telegrama urgente
+
+            if (radioButtonUr.Checked)
             {
                 tipoTelegrama = 'u';
-            }
 
+            }
 
             //Separa las palabras y las introduce en una estructura.
 
